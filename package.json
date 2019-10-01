@@ -4,9 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx jest --silent --detectOpenHandles",
+    "test-watch": "npx jest --watch --coverage --verbose --silent",
+    "cov-open": "open coverage/lcov-report/index.html",
+    "majestic": "npx majestic"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
 }
