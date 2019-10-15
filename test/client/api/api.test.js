@@ -6,12 +6,18 @@ let mockClient;
 describe("Api", () => {
   beforeEach(() => {
     mockClient = {
-      get: jest.fn(async () => { return Responses.OK })
+      get: jest.fn(async () => { return Responses.OK }),
+      post: jest.fn(async () => { return Responses.OK })
     }
   });
 
-  it("makes requests with authentication token", async () => {
+  it("makes requests with an authentication token", async () => {
     await Api("dummy-token", mockClient).makeRequest("GET", "test");
     expect(mockClient.get.mock.calls[0][1].headers.Authorization).toEqual("Bearer dummy-token");
+  });
+
+  it("makes request with correct path and method", async () => {
+    await Api("dummy-token", mockClient).makeRequest("POST", "test");
+    expect(mockClient.post.mock.calls[0][0]).toEqual("test");
   });
 });
