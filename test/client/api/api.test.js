@@ -5,13 +5,13 @@ let mockClient;
 
 describe("Api", () => {
   beforeEach(() => {
-    mockClient = async (url, options) => {
-      return Responses.OK;
-    };
+    mockClient = {
+      get: jest.fn(async () => { return Responses.OK })
+    }
   });
 
   it("makes requests with authentication token", async () => {
     await Api("dummy-token", mockClient).makeRequest("GET", "test");
-    expect(mockClient.mock.calls[0][1].headers.Authorization).toEqual("Bearer dummy-token");
+    expect(mockClient.get.mock.calls[0][1].headers.Authorization).toEqual("Bearer dummy-token");
   });
 });
