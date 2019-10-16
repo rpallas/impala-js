@@ -4,7 +4,7 @@ const Fakes = require('../../helpers/fakes')
 let mockClient
 
 describe('Api', () => {
-  describe('when there is an error', () => {
+  describe('when the request is successful', () => {
     beforeEach(() => {
       mockClient = {
         get: Fakes.mock(Fakes.responses.OK),
@@ -14,7 +14,7 @@ describe('Api', () => {
 
     it('makes requests with an authentication token', async () => {
       await Api('dummy-token', mockClient).makeRequest('GET', 'test')
-
+      
       expect(mockClient.get.mock.calls[0][1].headers.Authorization).toEqual('Bearer dummy-token')
     })
 
