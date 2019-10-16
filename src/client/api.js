@@ -1,4 +1,4 @@
-module.exports = function Api(apiKey, client) {
+function Api(apiKey, client) {
   return {
     makeRequest: async (method, url, options = {}) => {
       options.headers = {
@@ -9,3 +9,5 @@ module.exports = function Api(apiKey, client) {
     }
   };
 };
+
+module.exports = Api;
