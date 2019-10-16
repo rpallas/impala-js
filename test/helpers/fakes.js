@@ -1,4 +1,4 @@
-module.exports = {
+const responses = {
   OK: [{ statusCode: 200 }],
   badRequest: [{ statusCode: 400, error: "Bad Request", message: "you made a mistake" }],
   unauthorized: [{ statusCode: 401, error: "Unauthorized", message: "who are you?" }],
@@ -9,3 +9,17 @@ module.exports = {
   badGateway: [{ statusCode: 502, error: "Bad Gateway", message: "try again later" }],
   gatewayTimeout: [{ statusCode: 504, error: "Gateway Timeout", message: "try again later" }]
 };
+
+module.exports = {
+  responses,
+  mock: (response) => {
+    return jest.fn(async () => {
+      return response;
+    })
+  },
+  throws: () => {
+    return jest.fn(async () => {
+      throw new Error('trouble at t mill!');
+    })
+  }
+}

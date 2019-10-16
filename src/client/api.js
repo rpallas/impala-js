@@ -5,7 +5,11 @@ function Api(apiKey, client) {
         ...options.headers,
         Authorization: `Bearer ${apiKey}`
       };
-      return await client[method.toLowerCase()](url, options);
+      try {
+        return await client[method.toLowerCase()](url, options);
+      } catch (err) {
+        throw new Error(`Http Client: ${err}`);
+      }
     }
   };
 };
