@@ -1,7 +1,7 @@
-const Got = require('got');
+const Got = require('got')
 
-const Api = require('./api');
-const Impala = require('./impala');
+const Api = require('./api')
+const Impala = require('./impala')
 
 const baseUrl = 'https://api.getimpala.com/v2/'
 
@@ -12,7 +12,7 @@ function create(apiKey, hotelId) {
   if (hotelId) {
     return impala.getHotel(hotelId)
   }
-  return impala;
+  return impala
 }
 
 module.exports = {
