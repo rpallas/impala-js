@@ -3,7 +3,7 @@ const Hotel = require('./hotel')
 function Impala(api) {
   return {
     getHotel: hotelId => {
-      return Hotel(hotelId, api)
+      return new Hotel(hotelId, api)
     }
   }
 }

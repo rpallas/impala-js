@@ -11,7 +11,7 @@ describe('Impala', () => {
 
     it('returns the hotel object', async () => {
       const impala = Impala(mockApi)
-      
+
       expect(impala.getHotel('hotelId').id).toEqual('hotelId')
     })
   })

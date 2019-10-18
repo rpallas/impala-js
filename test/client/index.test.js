@@ -7,7 +7,7 @@ describe('Index', () => {
     describe('With hotelId', () => {
       it('returns the hotel object', async () => {
         const hotel = Index.create('apiKey', 'hotelId')
-        
+
         expect(hotel.id).toEqual('hotelId')
       })
     })
@@ -15,7 +15,7 @@ describe('Index', () => {
     describe('Without hotelId', () => {
       it('returns the impala object', async () => {
         const api = Index.create('apiKey')
-        
+
         expect(api.getHotel).not.toBeUndefined()
       })
     })

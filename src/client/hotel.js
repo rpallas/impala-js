@@ -1,3 +1,5 @@
+const Apis = require('./apis')
+
 function Hotel(id, api) {
 
   async function get(endpoint, params) {
@@ -28,6 +30,7 @@ function Hotel(id, api) {
   }
 
   return {
+    ...Apis,
     id,
     get,
     patch,
