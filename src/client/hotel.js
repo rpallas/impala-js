@@ -1,3 +1,5 @@
+const Moment = require('moment')
+
 const Apis = require('./apis')
 
 function Hotel(id, api) {
@@ -29,6 +31,10 @@ function Hotel(id, api) {
     return await api.makeRequest(method, url, options)
   }
 
+  function formatDate (date) {
+    return Moment(date).format('YYYY-MM-DD')
+  }
+
   // merging the apis into the hotel object makes them available in the client
   return {
     ...Apis,
@@ -36,7 +42,8 @@ function Hotel(id, api) {
     get,
     patch,
     post,
-    put
+    put,
+    formatDate
   }
 }
 
