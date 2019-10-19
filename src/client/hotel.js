@@ -29,6 +29,7 @@ function Hotel(id, api) {
     return await api.makeRequest(method, url, options)
   }
 
+  // merging the apis into the hotel object makes them available in the client
   return {
     ...Apis,
     id,
