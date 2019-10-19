@@ -52,7 +52,7 @@ parameter, like so:
 const impala = ImpalaSDK.create('api-key');
 
 // You can then pass the hotelId directly to the method
-impala.getBookings({hotelId: 'hotelId'});
+await impala.getBookings({hotelId: 'hotelId'});
 
 // Or with extra parameters
 impala.getBookings({
@@ -65,7 +65,7 @@ impala.getBookings({
 const hotel = impala.getHotel('hotelId')
 
 // You can then call the API methods like normal
-hotel.getBookings();
+await hotel.getBookings();
 ```
 
 ## Making API calls
@@ -83,7 +83,7 @@ const ImpalaSDK = require('impala-javascript-sdk')
 const impala = impalaSDK.create('api-key');
 const hotel = impala.getHotel('hotelId')
 
-hotel.updateBookingById('bookingId', { start: 123456, roomIds: ['abc', 'cde']})
+await hotel.updateBookingById('bookingId', { start: 123456, roomIds: ['abc', 'cde']})
 ```
 
 ## API methods
