@@ -1,4 +1,4 @@
-async function getExtras(params = []) {
+async function getExtras(params = {}) {
   return await this.get('extra', params)
 }
 

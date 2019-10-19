@@ -1,4 +1,4 @@
-async function getBookingSets(params = []) {
+async function getBookingSets(params = {}) {
   return await this.get('booking-set', params)
 }
 

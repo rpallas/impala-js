@@ -1,4 +1,4 @@
-async function getAreaTypes(params = []) {
+async function getAreaTypes(params = {}) {
   return await this.get('area-type', params)
 }
 

@@ -1,4 +1,4 @@
-async function getAreas(params = []) {
+async function getAreas(params = {}) {
   return await this.get('area', params)
 }
 

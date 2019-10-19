@@ -1,4 +1,4 @@
-async function getAllocations(params = []) {
+async function getAllocations(params = {}) {
   return await this.get('allocation', params)
 }
 

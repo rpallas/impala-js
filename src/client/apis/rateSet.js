@@ -1,4 +1,4 @@
-async function getRateSets(params = []) {
+async function getRateSets(params = {}) {
   return await this.get('rate-set', params)
 }
 

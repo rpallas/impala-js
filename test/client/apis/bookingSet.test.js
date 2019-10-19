@@ -22,7 +22,7 @@ describe('Apis/bookingSet', () => {
     })
 
     it('includes the params in the query property', async () => {
-      const params = [['key', 'a'], ['key', 'b']]
+      const params = { key1: 'a', key2: 'b'}
       await hotel.getBookingSets(params)
 
       expect(mockClient.get.mock.calls[0][1].query).toEqual(params)
