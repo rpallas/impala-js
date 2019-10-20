@@ -1,6 +1,8 @@
 async function getBookings(params = {}) {
   let { startDate, endDate } = params
-  if (!startDate != !endDate) { // xor
+
+  // xor
+  if (!startDate != !endDate) {
     throw new Error('getBookings requires both startDate and endDate (or neither)')
   }
 
