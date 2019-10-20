@@ -55,7 +55,7 @@ const impala = ImpalaSDK.create('api-key');
 await impala.getBookings({hotelId: 'hotelId'});
 
 // Or with extra parameters
-impala.getBookings({
+await impala.getBookings({
   hotelId: 'hotelId',
   startDate: '2018-02-03',
   endDate: '2018-02-05'
