@@ -1,5 +1,5 @@
-const Api = require('../../src/client/api')
-const Impala = require('../../src/client/impala')
+const Api = require('../src/api')
+const Impala = require('../src/impala')
 
 describe('Impala', () => {
   

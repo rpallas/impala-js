@@ -1,6 +1,6 @@
-const Api = require('../../../src/client/api')
-const Impala = require('../../../src/client/impala')
-const Fakes = require('../../helpers/fakes')
+const Api = require('../../src/api')
+const Impala = require('../../src/impala')
+const Fakes = require('../helpers/fakes')
 
 let mockClient, hotel
 

@@ -1,10 +1,10 @@
-const Api = require('../../../src/client/api')
-const Impala = require('../../../src/client/impala')
-const Fakes = require('../../helpers/fakes')
+const Api = require('../../src/api')
+const Impala = require('../../src/impala')
+const Fakes = require('../helpers/fakes')
 
 let mockClient, hotel
 
-describe('Apis/extra', () => {
+describe('Apis/areaType', () => {
   beforeEach(() => {
     mockClient = {
       get: Fakes.mock(Fakes.responses.OK)
@@ -12,26 +12,26 @@ describe('Apis/extra', () => {
     hotel = Impala(Api('dummy-token', mockClient)).getHotel('hotelId')
   })
 
-  describe('getExtras', () => {
+  describe('getAreaTypes', () => {
     it('makes a GET request to the correct endpoint', async () => {
-      await hotel.getExtras()
+      await hotel.getAreaTypes()
 
-      expect(mockClient.get.mock.calls[0][0]).toEqual('hotel/hotelId/extra')
+      expect(mockClient.get.mock.calls[0][0]).toEqual('hotel/hotelId/area-type')
     })
 
     it('includes the params in the query property', async () => {
       const params = { key1: 'a', key2: 'b'}
-      await hotel.getExtras(params)
+      await hotel.getAreaTypes(params)
 
       expect(mockClient.get.mock.calls[0][1].query).toEqual(params)
     })
   })
 
-  describe('getExtraById', () => {
+  describe('getAreaTypeById', () => {
     it('makes a GET request to the correct endpoint', async () => {
-      await hotel.getExtraById('123')
+      await hotel.getAreaTypeById('123')
 
-      expect(mockClient.get.mock.calls[0][0]).toEqual('hotel/hotelId/extra/123')
+      expect(mockClient.get.mock.calls[0][0]).toEqual('hotel/hotelId/area-type/123')
     })
   })
 })

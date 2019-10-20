@@ -1,4 +1,4 @@
-const Index = require('../../src/client')
+const Index = require('../src')
 
 describe('Index', () => {
   
