@@ -8,4 +8,7 @@ require('fs').readdirSync(__dirname).forEach((file) => {
   }
 });
 
+/**
+ * @module apis/index
+ */
 module.exports = apis;

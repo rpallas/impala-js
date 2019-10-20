@@ -40,13 +40,13 @@ describe('Apis/bookingSet', () => {
   describe('createBookingSet', () => {
     const bookingSetData = { grossAmount: 123456, reference: 'reference' }
     it('makes a GET request to the correct endpoint', async () => {
-      await hotel.createBookingSet('123', bookingSetData)
+      await hotel.createBookingSet(bookingSetData)
       
-      expect(mockClient.post.mock.calls[0][0]).toEqual('hotel/hotelId/booking-set/123')
+      expect(mockClient.post.mock.calls[0][0]).toEqual('hotel/hotelId/booking-set')
     })
     
     it('passes the data correctly', async () => {
-      await hotel.createBookingSet('123', bookingSetData)
+      await hotel.createBookingSet(bookingSetData)
       
       expect(mockClient.post.mock.calls[0][1].json).toEqual(bookingSetData)
       expect(mockClient.post.mock.calls[0][1].query).toEqual({})

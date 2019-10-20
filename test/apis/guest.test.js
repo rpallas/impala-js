@@ -74,13 +74,13 @@ describe('Apis/guest', () => {
     const guestData = { parentId: 123456, reference: 'reference' }
 
     it('makes a GET request to the correct endpoint', async () => {
-      await hotel.createGuest('123', guestData)
+      await hotel.createGuest(guestData)
 
-      expect(mockClient.post.mock.calls[0][0]).toEqual('hotel/hotelId/guest/123')
+      expect(mockClient.post.mock.calls[0][0]).toEqual('hotel/hotelId/guest')
     })
 
     it('passes the data correctly', async () => {
-      await hotel.createGuest('123', guestData)
+      await hotel.createGuest(guestData)
 
       expect(mockClient.post.mock.calls[0][1].json).toEqual(guestData)
       expect(mockClient.post.mock.calls[0][1].query).toEqual({})
