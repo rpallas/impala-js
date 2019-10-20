@@ -7,7 +7,7 @@ A port of https://github.com/GetImpala/impala-php
 It's as simple as:
 
 ```bash
-$ npm i impala-javascript-sdk
+$ npm i impala-js
 ```
 
 ## Tests
@@ -29,7 +29,7 @@ found in the ['Getting Started'][getting-started] section of the Impala develope
 After installation, you can create an impala client like this:
 
 ```javascript
-const ImpalaSDK = require('impala-javascript-sdk')
+const ImpalaSDK = require('impala-js')
 
 const impala = ImpalaSDK.create('api-key');
 ```
@@ -79,7 +79,7 @@ API methods that update a resource take the object representation of a [JSON mer
 For example:
 
 ```javascript
-const ImpalaSDK = require('impala-javascript-sdk')
+const ImpalaSDK = require('impala-js')
 const impala = impalaSDK.create('api-key');
 const hotel = impala.getHotel('hotelId')
 
