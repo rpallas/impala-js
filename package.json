@@ -1,7 +1,7 @@
 {
   "name": "@rpallas/impala-js",
   "version": "1.0.0",
-  "description": "",
+  "description": "Javascript wrapper for Impala hotel PMS API",
   "main": "index.js",
   "scripts": {
     "test": "npx jest --silent --detectOpenHandles",
@@ -10,8 +10,8 @@
     "cov-open": "open coverage/lcov-report/index.html",
     "majestic": "npx majestic"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["impala", "javascript", "client", "sdk"],
+  "author": "Robbie Pallas",
   "license": "ISC",
   "devDependencies": {
     "jest": "24.9.0"
@@ -19,5 +19,9 @@
   "dependencies": {
     "got": "^9.6.0",
     "moment": "^2.24.0"
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/rpallas/impala-js"
   }
 }
