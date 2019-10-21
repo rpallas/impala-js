@@ -1,0 +1,7 @@
+node_modules
+coverage/
+docs/
+test/
+jest.config.js
+jsdoc.json
+renovate.json
