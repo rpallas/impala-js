@@ -22,9 +22,9 @@ jobs:
         npm ci
     - name: test
       run: |
-        npx jest --silent --verbose
+        npx jest --silent --verbose --detectOpenHandles
     - name: coverage
       run: |
-        npx jest --coverage --silent
+        npx jest --coverage --silent --detectOpenHandles
       env:
         CI: true

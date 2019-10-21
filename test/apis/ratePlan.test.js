@@ -58,6 +58,12 @@ describe('Apis/rate-plan', () => {
       )
     })
 
+    it('returns an error if no params are passed', async () => {
+      await expect(hotel.getPriceForRatePlan('123')).rejects.toThrow(
+        'requires both startDate and endDate'
+      )
+    })
+
     it('returns an error if only startDate is passed', async () => {
       params = { startDate: '2019-01-01' }
 
@@ -112,6 +118,12 @@ describe('Apis/rate-plan', () => {
 
       await expect(hotel.updatePriceForRatePlan('123', data)).rejects.toThrow(
         'requires an amountDescription'
+      )
+    })
+
+    it('returns an error if data is omitted', async () => {
+      await expect(hotel.updatePriceForRatePlan('123')).rejects.toThrow(
+        'requires a date'
       )
     })
 

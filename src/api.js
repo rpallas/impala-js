@@ -4,8 +4,8 @@
 
 const Path = require('path')
 
-const { version } = require(Path.join(process.cwd(), 'package.json'))
-const userAgent = `impala-js/${version}`
+const { name, version } = require(Path.join(process.cwd(), 'package.json'))
+const userAgent = `${name}/${version}`
 
 /**
  * Handles connection to Impala API.

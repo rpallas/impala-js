@@ -2,7 +2,6 @@
 
 ## Implementation
  * Schema based validation - maybe use @hapi/joi
- * Improve error handling
 
 ## Features
  * Support Configurable request retries
@@ -11,4 +10,4 @@
  * Support Correlation IDs (tracing)
 
 ## Tech debt
- * Add missing tests for user-agent handling
+ * Improve error handling

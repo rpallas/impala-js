@@ -19,6 +19,12 @@ describe('Api', () => {
       expect(mockClient.get.mock.calls[0][1].headers.Authorization).toEqual('Bearer dummy-token')
     })
 
+    it('sets the user-agent in requests', async () => {
+      await api.makeRequest('GET', 'test')
+
+      expect(mockClient.get.mock.calls[0][1].headers['User-Agent']).toMatch(/impala-js\/\d.\d.\d/)
+    })
+
     it('makes requests with correct path and method', async () => {
       await api.makeRequest('POST', 'test')
 
@@ -27,11 +33,11 @@ describe('Api', () => {
 
     it('makes requests with correct options', async () => {
       await api.makeRequest('POST', 'test', {
-        query: 'param1=test',
+        query: { key: 'value' },
         baseUrl: 'foo/'
       })
 
-      expect(mockClient.post.mock.calls[0][1].query).toEqual('param1=test')
+      expect(mockClient.post.mock.calls[0][1].query).toEqual({ key: 'value' })
       expect(mockClient.post.mock.calls[0][1].baseUrl).toEqual('foo/')
     })
   })

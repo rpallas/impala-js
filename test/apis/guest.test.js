@@ -37,6 +37,12 @@ describe('Apis/guest', () => {
       )
     })
 
+    it('returns an error if no params are passed', async () => {
+      await expect(hotel.getGuests()).rejects.toThrow(
+        'requires both startDate and endDate'
+      )
+    })
+
     it('returns an error if only startDate is passed', async () => {
       params = { startDate: '2019-01-01' }
 
