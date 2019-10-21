@@ -1,4 +1,8 @@
 /**
+ * @module apis/bill
+ */
+
+/**
  * Get a specific bill given its ID.
  * 
  * @param  {string} billId ID of the bill to retrieve.
@@ -94,9 +98,6 @@ async function refundPaymentByIdForBill(billId, paymentId) {
   return await this.post(`bill/${billId}/payment/${paymentId}/refund`)
 }
 
-/**
- * @module apis/bill
- */
 module.exports = {
   getBillById,
   getChargeByIdForBill,

@@ -2,13 +2,14 @@
   "name": "@rpallas/impala-js",
   "version": "1.1.0",
   "description": "Javascript wrapper for Impala hotel PMS API",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "npx jest --silent --detectOpenHandles",
     "test-spec": "npx jest --silent --verbose --detectOpenHandles",
     "test-watch": "npx jest --watch --coverage --verbose --silent",
     "cov-open": "open coverage/lcov-report/index.html",
-    "majestic": "npx majestic"
+    "majestic": "npx majestic",
+    "generate-docs": "npx jsdoc -d docs src/* README.md"
   },
   "keywords": [
     "impala",

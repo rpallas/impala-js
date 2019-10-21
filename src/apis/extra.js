@@ -1,4 +1,8 @@
 /**
+ * @module apis/extra
+ */
+
+/**
  * Get all extras.
  * 
  * @param  {object} params={} Optional params to be passed to request.
@@ -18,9 +22,6 @@ async function getExtraById(extraId) {
   return await this.get(`extra/${extraId}`)
 }
 
-/**
- * @module apis/extra
- */
 module.exports = {
   getExtras,
   getExtraById

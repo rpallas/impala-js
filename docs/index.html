@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Home</h1>
+
+    
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>Impala API Javascript SDK</h1>
+<p><a href="https://github.com/rpallas/impala-js/actions"><img src="https://github.com/rpallas/impala-js/workflows/nodejs-CI/badge.svg" alt="Actions Status"></a></p>
+<p>A port of https://github.com/GetImpala/impala-php</p>
+<h2>Installation</h2>
+<p>It's as simple as:</p>
+<pre class="prettyprint source lang-bash"><code>$ npm i @rpallas/impala-js
+</code></pre>
+<h2>Tests</h2>
+<p>To run the tests you can run the following commands:</p>
+<pre class="prettyprint source lang-bash"><code>$ npm i
+$ npm test
+</code></pre>
+<h2>Obtaining an API key</h2>
+<p>To use this library, you will need an Impala API key. More information can be
+found in the <a href="https://docs.getimpala.com/#getting-started">'Getting Started'</a> section of the Impala developer documentation.</p>
+<h2>Getting Started</h2>
+<p>After installation, you can create an impala client like this:</p>
+<pre class="prettyprint source lang-javascript"><code>const ImpalaSDK = require('@rpallas/impala-js')
+
+const impala = ImpalaSDK.create('api-key');
+</code></pre>
+<h3>Working with a single hotel</h3>
+<p>If your application will only be dealing with a single hotel at a time,
+you can instantiate the Impala API like this:</p>
+<pre class="prettyprint source lang-javascript"><code>const hotel = ImpalaSDK.create('api-key', 'hotelId');
+</code></pre>
+<h3>Working with multiple hotels</h3>
+<p>If your application will be dealing with multiple hotels, you can omit the <code>hotelId</code>
+parameter, like so:</p>
+<pre class="prettyprint source lang-javascript"><code>const impala = ImpalaSDK.create('api-key');
+
+// You can then pass the hotelId directly to the method
+await impala.getBookings({hotelId: 'hotelId'});
+
+// Or with extra parameters
+await impala.getBookings({
+  hotelId: 'hotelId',
+  startDate: '2018-02-03',
+  endDate: '2018-02-05'
+});
+
+// Or, you can call getHotel to return a single-hotel API instance
+const hotel = impala.getHotel('hotelId')
+
+// You can then call the API methods like normal
+await hotel.getBookings();
+</code></pre>
+<h2>Making API calls</h2>
+<p>API methods accept an object as their first argument, containing the parameters for the API call. This can be omitted if there are no arguments to set.</p>
+<p>API methods that take an ID have the ID as the first argument.</p>
+<p>API methods that update a resource take the object representation of a <a href="https://tools.ietf.org/html/rfc7386">JSON merge patch</a> as their second argument.</p>
+<p>For example:</p>
+<pre class="prettyprint source lang-javascript"><code>const ImpalaSDK = require('@rpallas/impala-js')
+const impala = impalaSDK.create('api-key');
+const hotel = impala.getHotel('hotelId')
+
+await hotel.updateBookingById('bookingId', { start: 123456, roomIds: ['abc', 'cde']})
+</code></pre>
+<h2>API methods</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Name</th>
+<th style="text-align:left">HTTP API endpoint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>getAllocationById</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#allocation-group-block"><code>GET /v2/hotel/:hotelId/allocation/:allocationId</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getAllocations</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#allocation-group-block"><code>GET /v2/hotel/:hotelId/allocation</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getAreaById</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#area"><code>GET /v2/hotel/:hotelId/area/:areaId</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getAreas</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#area"><code>GET /v2/hotel/:hotelId/area</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getAreaTypeById</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#area-types"><code>GET /v2/hotel/:hotelId/area-type/:areaTypeId</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getAreaTypes</code></td>
+<td style="text-align:left">[<code>GET /v2/hotel/:hotelId/area-type</code>][type-area-type]</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getBillById</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#bill"><code>GET /v2/hotel/:hotelId/bill/:billId</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getChargeByIdForBill</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#bill"><code>GET /v2/hotel/:hotelId/bill/:billId/charge/:chargeId</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getChargesForBill</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#bill"><code>GET /v2/hotel/:hotelId/bill/:billId/charge</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>createChargeForBill</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#bill"><code>POST /v2/hotel/:hotelId/bill/:billId/charge</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>refundChargeByIdForBill</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#bill"><code>POST /v2/hotel/:hotelId/bill/:billId/charge/:chargeId/refund</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getPaymentByIdForBill</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#bill"><code>GET /v2/hotel/:hotelId/bill/:billId/payment/:paymentId</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getPaymentsForBill</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#bill"><code>GET /v2/hotel/:hotelId/bill/:billId/payment</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>createPaymentForBill</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#bill"><code>POST /v2/hotel/:hotelId/bill/:billId/payment</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>refundPaymentByIdForBill</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#bill"><code>POST /v2/hotel/:hotelId/bill/:billId/payment/:paymentId/refund</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getBookingById</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#booking"><code>GET /v2/hotel/:hotelId/booking/:bookingId</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getBookings</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#booking"><code>GET /v2/hotel/:hotelId/booking</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>createBooking</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#booking"><code>POST /v2/hotel/:hotelId/booking</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>updateBookingById</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#booking"><code>PATCH /v2/hotel/:hotelId/booking/:bookingId</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>checkInBookingById</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#booking"><code>POST /v2/hotel/:hotelId/booking/:bookingId/check-in</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>checkOutBookingById</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#booking"><code>POST /v2/hotel/:hotelId/booking/:bookingId/check-out</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>cancelBookingById</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#booking"><code>POST /v2/hotel/:hotelId/booking/:bookingId/cancel</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getGuestsForBooking</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#booking"><code>GET /v2/hotel/:hotelId/booking/:bookingId/guest</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getBillsForBooking</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#booking"><code>GET /v2/hotel/:hotelId/booking/:bookingId/bill</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getBookingSets</code></td>
+<td style="text-align:left">[<code>GET /v2/hotel/:hotelId/booking-set</code>][type-bookingset]</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getBookingSetById</code></td>
+<td style="text-align:left">[<code>GET /v2/hotel/:hotelId/booking-set/:bookingSetId</code>][type-bookingset]</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>createBookingSet</code></td>
+<td style="text-align:left">[<code>POST /v2/hotel/:hotelId/booking-set</code>][type-bookingset]</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>updateBookingSet</code></td>
+<td style="text-align:left">[<code>PATCH /v2/hotel/:hotelId/booking-set/:bookingSetId</code>][type-bookingset]</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getExtraById</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#extra"><code>GET /v2/hotel/:hotelId/extra/:extraId</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getExtras</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#extra"><code>GET /v2/hotel/:hotelId/extra</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getGuestById</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#guest"><code>GET /v2/hotel/:hotelId/guest/:guestId</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getGuests</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#guest"><code>GET /v2/hotel/:hotelId/guest</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>createGuest</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#guest"><code>POST /v2/hotel/:hotelId/guest</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>updateGuest</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#guest"><code>PATCH /v2/hotel/:hotelId/guest/:guestId</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getBillsForGuest</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#guest"><code>GET /v2/hotel/:hotelId/guest/:guestId/bill</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getRatePlanById</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#rate-plan"><code>GET /v2/hotel/:hotelId/rate-plan/:ratePlanId</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getRatePlans</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#rate-plan"><code>GET /v2/hotel/:hotelId/rate-plan</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getPriceForRatePlan</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#rate-plan"><code>GET /v2/hotel/:hotelId/rate-plan/:ratePlanId/price</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>updatePriceForRatePlan</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#rate-plan"><code>PUT /v2/hotel/:hotelId/rate-plan/:ratePlanId/price</code></a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>getRateSets</code></td>
+<td style="text-align:left"><a href="https://docs.getimpala.com/#rate-set"><code>GET /v2/hotel/:hotelId/rate-set</code></a></td>
+</tr>
+</tbody>
+</table></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-api.html">api</a></li><li><a href="module-apis.html">apis</a></li><li><a href="module-apis_allocation.html">apis/allocation</a></li><li><a href="module-apis_area.html">apis/area</a></li><li><a href="module-apis_areaType.html">apis/areaType</a></li><li><a href="module-apis_bill.html">apis/bill</a></li><li><a href="module-apis_booking.html">apis/booking</a></li><li><a href="module-apis_bookingSet.html">apis/bookingSet</a></li><li><a href="module-apis_extra.html">apis/extra</a></li><li><a href="module-apis_guest.html">apis/guest</a></li><li><a href="module-apis_ratePlan.html">apis/ratePlan</a></li><li><a href="module-apis_ratePrice.html">apis/ratePrice</a></li><li><a href="module-apis_rateSet.html">apis/rateSet</a></li><li><a href="module-hotel.html">hotel</a></li><li><a href="module-impala.html">impala</a></li><li><a href="module-index.html">index</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Mon Oct 21 2019 21:21:23 GMT+0100 (BST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

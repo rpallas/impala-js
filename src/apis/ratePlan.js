@@ -1,4 +1,8 @@
 /**
+ * @module apis/ratePlan
+ */
+
+/**
  * Get all rate plans for a hotel.
  * 
  * @param  {object} params={} Optional params to be passed to request.
@@ -61,9 +65,6 @@ async function updatePriceForRatePlan(ratePlanId, data = {}) {
   return await this.put(`rate-plan/${ratePlanId}/price`, {}, data)
 }
 
-/**
- * @module apis/ratePlan
- */
 module.exports = {
   getRatePlans,
   getRatePlanById,

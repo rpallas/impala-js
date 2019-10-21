@@ -1,11 +1,12 @@
+/**
+ * @module index
+ */
+
 const Got = require('got')
 
 const Api = require('./api')
 const Impala = require('./impala')
 
-/**
- * @module index
- */
 
 const baseUrl = 'https://api.getimpala.com/v2/'
 

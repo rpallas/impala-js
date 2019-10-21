@@ -1,4 +1,8 @@
 /**
+ * @module apis/allocation
+ */
+
+/**
  * Get all allocations.
  * 
  * @param  {object} params={} Optional params to be passed to request.
@@ -18,9 +22,6 @@ async function getAllocationById(allocationId) {
   return await this.get(`allocation/${allocationId}`)
 }
 
-/**
- * @module apis/allocation
- */
 module.exports = {
   getAllocations,
   getAllocationById

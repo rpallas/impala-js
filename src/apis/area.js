@@ -1,4 +1,8 @@
 /**
+ * @module apis/area
+ */
+
+/**
  * Get all areas.
  * 
  * @param  {object} params={} Optional params to be passed to request.
@@ -18,9 +22,6 @@ async function getAreaById(areaId) {
   return await this.get(`area/${areaId}`)
 }
 
-/**
- * @module apis/area
- */
 module.exports = {
   getAreas,
   getAreaById

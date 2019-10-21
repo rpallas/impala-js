@@ -1,4 +1,8 @@
 /**
+ * @module apis/ratePrice
+ */
+
+/**
  * Get all rate prices for a hotel.
  * 
  * @param  {object} params={} Optional params to be passed to request.
@@ -26,9 +30,6 @@ async function getRatePrices(params = {}) {
   return await this.get(routeParts.join('/'), params)
 }
 
-/**
- * @module apis/ratePrice
- */
 module.exports = {
   getRatePrices
 }

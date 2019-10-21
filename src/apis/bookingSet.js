@@ -1,4 +1,8 @@
 /**
+ * @module apis/bookingSet
+ */
+
+/**
  * Get all booking sets for a hotel.
  * 
  * @param  {object} params={} Optional params to be passed to request.
@@ -39,9 +43,6 @@ async function updateBookingSet(bookingSetId, data) {
   return await this.patch(`booking-set/${bookingSetId}`, {}, data)
 }
 
-/**
- * @module apis/bookingSet
- */
 module.exports = {
   getBookingSets,
   getBookingSetById,

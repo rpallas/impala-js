@@ -1,3 +1,9 @@
+/**
+ * Responsible for loading the apis
+ * 
+ * @module apis
+ */
+
 let apis = {};
 require('fs').readdirSync(__dirname).forEach((file) => {
   if (file !== 'index.js') {
@@ -8,7 +14,4 @@ require('fs').readdirSync(__dirname).forEach((file) => {
   }
 });
 
-/**
- * @module apis/index
- */
 module.exports = apis;

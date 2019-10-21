@@ -1,4 +1,8 @@
 /**
+ * @module apis/booking
+ */
+
+/**
  * Get all bookings for a hotel.
  * 
  * @param  {object} params={} Optional params to be passed to request.
@@ -101,9 +105,6 @@ async function getBillsForBooking(bookingId) {
   return await this.get(`booking/${bookingId}/bill`)
 }
 
-/**
- * @module apis/booking
- */
 module.exports = {
   getBookings,
   getBookingById,

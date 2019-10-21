@@ -1,4 +1,8 @@
 /**
+ * @module apis/areaType
+ */
+
+/**
  * Get all area types.
  * 
  * @param  {object} params={} Optional params to be passed to request.
@@ -18,9 +22,6 @@ async function getAreaTypeById(areaTypeId) {
   return await this.get(`area-type/${areaTypeId}`)
 }
 
-/**
- * @module apis/areaType
- */
 module.exports = {
   getAreaTypes,
   getAreaTypeById

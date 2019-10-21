@@ -1,9 +1,12 @@
+/**
+ * @module hotel
+ */
+
 const Moment = require('moment')
 
 const Apis = require('./apis')
 
 /**
- * @module hotel
  * @param  {string} id The hotel ID
  * @param  {api} api
  */

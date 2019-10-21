@@ -1,9 +1,12 @@
+/**
+ * @module impala
+ */
+
 const Hotel = require('./hotel')
 
 /**
  * Service to make requests to Impala API.
  * 
- * @module impala
  * @param  {api} api
  */
 function Impala(api) {

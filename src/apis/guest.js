@@ -1,4 +1,8 @@
 /**
+ * @module apis/guest
+ */
+
+/**
  * Get all guests for a hotel.
  * 
  * @param  {object} params={} Optional params to be passed to request.
@@ -58,9 +62,6 @@ async function getBillsForGuest(guestId) {
   return await this.get(`guest/${guestId}/bill`)
 }
 
-/**
- * @module apis/guest
- */
 module.exports = {
   getGuests,
   getGuestById,
