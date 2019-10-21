@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx jest --silent --detectOpenHandles",
+    "test-spec": "npx jest --silent --verbose --detectOpenHandles",
     "test-watch": "npx jest --watch --coverage --verbose --silent",
     "cov-open": "open coverage/lcov-report/index.html",
     "majestic": "npx majestic"
