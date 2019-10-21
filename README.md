@@ -1,5 +1,7 @@
 # Impala API Javascript SDK
 
+[![Actions Status](https://github.com/rpallas/impala-js/workflows/nodejs-CI/badge.svg)](https://github.com/rpallas/impala-js/actions)
+
 A port of https://github.com/GetImpala/impala-php
 
 ## Installation
