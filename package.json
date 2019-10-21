@@ -9,7 +9,7 @@
     "test-watch": "npx jest --watch --coverage --verbose --silent",
     "cov-open": "open coverage/lcov-report/index.html",
     "majestic": "npx majestic",
-    "generate-docs": "npx jsdoc -d docs src/* README.md"
+    "generate-docs": "npx jsdoc -c jsdoc.json"
   },
   "keywords": [
     "impala",
