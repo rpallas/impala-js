@@ -17,7 +17,7 @@ function Impala(api) {
      * @param  {string} hotelId
      */
     getHotel: (hotelId) => {
-      return Hotel(hotelId, api)
+      return new Hotel(hotelId, api)
     }
   }
 }

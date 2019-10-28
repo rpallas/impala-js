@@ -7,7 +7,6 @@ const Got = require('got')
 const Api = require('./api')
 const Impala = require('./impala')
 
-
 const baseUrl = 'https://api.getimpala.com/v2/'
 
 /**
