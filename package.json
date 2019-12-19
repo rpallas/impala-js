@@ -24,7 +24,7 @@
     "jest": "24.9.0"
   },
   "dependencies": {
-    "got": "^9.6.0",
+    "got": "^10.0.0",
     "moment": "^2.24.0"
   },
   "repository": {
