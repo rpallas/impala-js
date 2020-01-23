@@ -21,7 +21,7 @@
   "author": "Robbie Pallas",
   "license": "ISC",
   "devDependencies": {
-    "jest": "24.9.0"
+    "jest": "25.1.0"
   },
   "dependencies": {
     "got": "^10.0.0",
