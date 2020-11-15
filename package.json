@@ -30,5 +30,8 @@
   "repository": {
     "type": "github",
     "url": "https://github.com/rpallas/impala-js"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
