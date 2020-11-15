@@ -19,12 +19,6 @@ describe('Api', () => {
       expect(mockClient.get.mock.calls[0][1].headers.Authorization).toEqual('Bearer dummy-token')
     })
 
-    it('sets the user-agent in requests', async () => {
-      await api.makeRequest('GET', 'test')
-
-      expect(mockClient.get.mock.calls[0][1].headers['User-Agent']).toMatch(/impala-js\/\d.\d.\d/)
-    })
-
     it('makes requests with correct path and method', async () => {
       await api.makeRequest('POST', 'test')
 
@@ -39,6 +33,33 @@ describe('Api', () => {
 
       expect(mockClient.post.mock.calls[0][1].query).toEqual({ key: 'value' })
       expect(mockClient.post.mock.calls[0][1].baseUrl).toEqual('foo/')
+    })
+  })
+
+  describe('useragent', () => {
+    beforeEach(() => {
+      mockClient = {
+        get: Fakes.mock(Fakes.responses.OK),
+        post: Fakes.mock(Fakes.responses.OK)
+      }
+    })
+
+    it('sets the user-agent in requests by default', async () => {
+      api = Api('dummy-token', mockClient)
+
+      await api.makeRequest('GET', 'test')
+
+      console.log(mockClient.get.mock.calls[0][1].headers['User-Agent'])
+      expect(mockClient.get.mock.calls[0][1].headers['User-Agent']).toMatch(/@rpallas\/impala-js\/\d.\d.\d/)
+    })
+
+    it('does not set the user-agent in requests when disabled via options', async () => {
+      api = Api('dummy-token', mockClient, { useragent: false })
+
+      await api.makeRequest('GET', 'test')
+
+      console.log(mockClient.get.mock.calls[0][1].headers['User-Agent'])
+      expect(mockClient.get.mock.calls[0][1].headers['User-Agent']).toEqual(undefined)
     })
   })
 
