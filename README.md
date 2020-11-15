@@ -42,19 +42,19 @@ If your application will only be dealing with a single hotel at a time,
 you can instantiate the Impala API like this:
 
 ```javascript
-const hotel = ImpalaSDK.create('api-key', 'hotelId');
+const hotel = ImpalaSDK.create('api-key', { hotelId: 'hotelId' });
 ```
 
 ### Working with multiple hotels
 
 If your application will be dealing with multiple hotels, you can omit the `hotelId`
-parameter, like so:
+config parameter, like so:
 
 ```javascript
 const impala = ImpalaSDK.create('api-key');
 
 // You can then pass the hotelId directly to the method
-await impala.getBookings({hotelId: 'hotelId'});
+await impala.getBookings({ hotelId: 'hotelId' });
 
 // Or with extra parameters
 await impala.getBookings({
@@ -76,7 +76,7 @@ API methods accept an object as their first argument, containing the parameters 
 
 API methods that take an ID have the ID as the first argument.
 
-API methods that update a resource take the object representation of a [JSON merge patch](https://tools.ietf.org/html/rfc7386) as their second argument. 
+API methods that update a resource take the object representation of a [JSON merge patch](https://tools.ietf.org/html/rfc7386) as their second argument.
 
 For example:
 
@@ -86,6 +86,23 @@ const impala = impalaSDK.create('api-key');
 const hotel = impala.getHotel('hotelId')
 
 await hotel.updateBookingById('bookingId', { start: 123456, roomIds: ['abc', 'cde']})
+```
+
+## Config
+
+A `config` object containing the following properties can be passed to the `create` function.
+
+  * `hotelId` - The `hotelId` of the hotel to return when working with a single hotel.
+  * `useragent` - A useragent string which is appended to the `User-Agent` header in requests. Can also be set to `false` to disable the useragent header.
+
+### Example
+
+```javascript
+const config = {
+  hotelId: 'hotelId',
+  useragent: `${myAppName}/${myAppVersion}`
+}
+const impala = ImpalaSDK.create('api-key', config);
 ```
 
 ## API methods
