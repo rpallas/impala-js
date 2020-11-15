@@ -16,16 +16,17 @@ const baseUrl = 'https://api.getimpala.com/v2/'
  * If a hotel ID is passed uses the Impala object to get a hotel object and
  * return it, otherwise returns the Impala object itself.
  * @param {string} apiKey API key to access Impala
- * @param {string} hotelId Optional hotel ID
- * @param {string} options Optional hotel ID
+ * @param {string|object} config Optional config object or hotel ID string
+ * config.hotelId - optional hotel ID
+ * config.useragent - optional useragent string that is appended to the User-Agent header in requests
  * @returns {object} a hotel or impala instance
  */
 function create(apiKey, hotelId, options) {
   const client = Got.extend({ baseUrl })
-  const api = Api(apiKey, client)
+  const api = Api(apiKey, client, config)
   const impala = Impala(api)
-  if (hotelId) {
-    return impala.getHotel(hotelId)
+  if (config.hotelId) {
+    return impala.getHotel(config.hotelId)
   }
   return impala
 }
