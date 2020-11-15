@@ -21,7 +21,10 @@ const baseUrl = 'https://api.getimpala.com/v2/'
  * config.useragent - optional useragent string that is appended to the User-Agent header in requests
  * @returns {object} a hotel or impala instance
  */
-function create(apiKey, hotelId, options) {
+function create(apiKey, config = {}) {
+  if (typeof config === 'string') { // backwards compatibility
+    config = { hotelId: config }
+  }
   const client = Got.extend({ baseUrl })
   const api = Api(apiKey, client, config)
   const impala = Impala(api)

@@ -49,7 +49,6 @@ describe('Api', () => {
 
       await api.makeRequest('GET', 'test')
 
-      console.log(mockClient.get.mock.calls[0][1].headers['User-Agent'])
       expect(mockClient.get.mock.calls[0][1].headers['User-Agent']).toMatch(/@rpallas\/impala-js\/\d.\d.\d/)
     })
 
@@ -58,7 +57,6 @@ describe('Api', () => {
 
       await api.makeRequest('GET', 'test')
 
-      console.log(mockClient.get.mock.calls[0][1].headers['User-Agent'])
       expect(mockClient.get.mock.calls[0][1].headers['User-Agent']).toMatch(/impala-js\/\d.\d.\d app-useragent\/1.0.0/)
     })
 
@@ -67,7 +65,6 @@ describe('Api', () => {
 
       await api.makeRequest('GET', 'test')
 
-      console.log(mockClient.get.mock.calls[0][1].headers['User-Agent'])
       expect(mockClient.get.mock.calls[0][1].headers['User-Agent']).toEqual(undefined)
     })
   })
