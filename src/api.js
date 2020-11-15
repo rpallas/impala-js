@@ -14,7 +14,7 @@ const Path = require('path')
 function Api(apiKey, client, config = {}) {
   let userAgent;
   if(config.useragent !== false) {
-    userAgent = getUserAgent()
+    userAgent = config.useragent ? `${getUserAgent()} ${config.useragent}` : getUserAgent()
   }
 
   function getUserAgent() {

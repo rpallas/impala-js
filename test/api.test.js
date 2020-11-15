@@ -53,7 +53,16 @@ describe('Api', () => {
       expect(mockClient.get.mock.calls[0][1].headers['User-Agent']).toMatch(/@rpallas\/impala-js\/\d.\d.\d/)
     })
 
-    it('does not set the user-agent in requests when disabled via options', async () => {
+    it('appends configured useragent when set', async () => {
+      api = Api('dummy-token', mockClient, { useragent: 'app-useragent/1.0.0' })
+
+      await api.makeRequest('GET', 'test')
+
+      console.log(mockClient.get.mock.calls[0][1].headers['User-Agent'])
+      expect(mockClient.get.mock.calls[0][1].headers['User-Agent']).toMatch(/impala-js\/\d.\d.\d app-useragent\/1.0.0/)
+    })
+
+    it('does not set the user-agent when disabled via options', async () => {
       api = Api('dummy-token', mockClient, { useragent: false })
 
       await api.makeRequest('GET', 'test')
