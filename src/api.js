@@ -4,16 +4,24 @@
 
 const Path = require('path')
 
-const { name, version } = require(Path.join(process.cwd(), 'package.json'))
-const userAgent = `${name}/${version}`
-
 /**
  * Handles connection to Impala API.
- * 
- * @param  {string}   apiKey Key to authenticate into Impala API.
- * @param  {function} client Client to make HTTP requests.
+ *
+ * @param  {string}   apiKey  Key to authenticate into Impala API.
+ * @param  {function} client  Client to make HTTP requests.
+ * @param  {object}   config  Configuration options.
  */
-function Api(apiKey, client) {
+function Api(apiKey, client, config = {}) {
+  let userAgent;
+  if(config.useragent !== false) {
+    userAgent = getUserAgent()
+  }
+
+  function getUserAgent() {
+    const { name, version } = require(Path.join(process.cwd(), 'package.json'))
+    return `${name}/${version}`
+  }
+
   return {
     /**
      * Makes a request to Impala API.
@@ -26,8 +34,10 @@ function Api(apiKey, client) {
     makeRequest: async (method, url, options = {}) => {
       options.headers = {
         ...options.headers,
-        'User-Agent': userAgent,
         Authorization: `Bearer ${apiKey}`
+      }
+      if(userAgent) {
+        options.headers['User-Agent'] = userAgent
       }
       try {
         return await client[method.toLowerCase()](url, options)

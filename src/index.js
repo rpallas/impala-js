@@ -17,9 +17,10 @@ const baseUrl = 'https://api.getimpala.com/v2/'
  * return it, otherwise returns the Impala object itself.
  * @param {string} apiKey API key to access Impala
  * @param {string} hotelId Optional hotel ID
+ * @param {string} options Optional hotel ID
  * @returns {object} a hotel or impala instance
  */
-function create(apiKey, hotelId) {
+function create(apiKey, hotelId, options) {
   const client = Got.extend({ baseUrl })
   const api = Api(apiKey, client)
   const impala = Impala(api)
