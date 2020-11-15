@@ -33,7 +33,7 @@ After installation, you can create an impala client like this:
 ```javascript
 const ImpalaSDK = require('@rpallas/impala-js')
 
-const impala = ImpalaSDK.create('api-key');
+const impala = ImpalaSDK.create('api-key')
 ```
 
 ### Working with a single hotel
@@ -42,7 +42,7 @@ If your application will only be dealing with a single hotel at a time,
 you can instantiate the Impala API like this:
 
 ```javascript
-const hotel = ImpalaSDK.create('api-key', { hotelId: 'hotelId' });
+const hotel = ImpalaSDK.create('api-key', { hotelId: 'hotelId' })
 ```
 
 ### Working with multiple hotels
@@ -51,23 +51,23 @@ If your application will be dealing with multiple hotels, you can omit the `hote
 config parameter, like so:
 
 ```javascript
-const impala = ImpalaSDK.create('api-key');
+const impala = ImpalaSDK.create('api-key')
 
 // You can then pass the hotelId directly to the method
-await impala.getBookings({ hotelId: 'hotelId' });
+await impala.getBookings({ hotelId: 'hotelId' })
 
 // Or with extra parameters
 await impala.getBookings({
   hotelId: 'hotelId',
   startDate: '2018-02-03',
   endDate: '2018-02-05'
-});
+})
 
 // Or, you can call getHotel to return a single-hotel API instance
 const hotel = impala.getHotel('hotelId')
 
 // You can then call the API methods like normal
-await hotel.getBookings();
+await hotel.getBookings()
 ```
 
 ## Making API calls
@@ -82,7 +82,7 @@ For example:
 
 ```javascript
 const ImpalaSDK = require('@rpallas/impala-js')
-const impala = impalaSDK.create('api-key');
+const impala = impalaSDK.create('api-key')
 const hotel = impala.getHotel('hotelId')
 
 await hotel.updateBookingById('bookingId', { start: 123456, roomIds: ['abc', 'cde']})
@@ -102,7 +102,7 @@ const config = {
   hotelId: 'hotelId',
   useragent: `${myAppName}/${myAppVersion}`
 }
-const impala = ImpalaSDK.create('api-key', config);
+const impala = ImpalaSDK.create('api-key', config)
 ```
 
 ## API methods
